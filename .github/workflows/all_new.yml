@@ -31,6 +31,13 @@ on:
         options:
           - stable-noksu
           - wip-noksu
+      KERNEL_TREE_BRANCH_3:
+        description: 'Kernel Tree Branch (NOKSU)'
+        default: 'wip-noksu'
+        required: false
+        type: choice
+        options:
+          - stable-susfs
       VERSION:
         description: 'Zip Version'
         default: '1.0.0'
