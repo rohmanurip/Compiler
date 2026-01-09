@@ -197,3 +197,8 @@ jobs:
           name: ${{ env.ZIP_NAME }}
           path: ${{ env.ZIP_NAME }}.zip # ✅ Path relatif dari workspace root
           if-no-files-found: ignore
+
+      - name: Download ZIP artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
