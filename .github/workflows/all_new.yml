@@ -32,7 +32,7 @@ on:
         options:
           - stable-noksu
           - wip-noksu
-      KERNEL_TREE_BRANCH_3:
+      KERNEL_TREE_BRANCH_4:
         description: 'Kernel Tree Branch (NOKSU)'
         default: 'wip-noksu'
         required: false
