@@ -1,4 +1,4 @@
-name: Build Perf+ (stable)
+name: Build Perf+ (stable-susfs)
 
 on:
   workflow_dispatch:
