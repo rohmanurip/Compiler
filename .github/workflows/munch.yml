@@ -200,8 +200,8 @@ jobs:
       - name: Upload Zip
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.ZIP_NAME }}
-          path: ${{ env.ZIP_NAME }}.zip # ✅ Path relatif dari workspace root
+          name: ${{ env.ZIP_NAME }}.zip
+          path: ${{ github.workspace }} # ✅ Path relatif dari workspace root
           if-no-files-found: ignore
 
       - name: Download all ZIP artifacts
