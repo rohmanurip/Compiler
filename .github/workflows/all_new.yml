@@ -6,7 +6,7 @@ on:
     inputs:
       KERNEL_TREE_1:
         description: 'Kernel Tree'
-        default: 'https://github.com/rohmanurip/Perf_Kernel'
+        default: 'https://github.com/rohmanurip/perf_kernel'
         required: true
       KERNEL_TREE_BRANCH_1:
         description: 'Kernel Tree Branch (RKSU)'
@@ -24,6 +24,7 @@ on:
         options:
           - stable-next
           - wip-next
+          - stable-susfs
       KERNEL_TREE_BRANCH_3:
         description: 'Kernel Tree Branch (NOKSU)'
         default: 'wip-noksu'
@@ -32,13 +33,6 @@ on:
         options:
           - stable-noksu
           - wip-noksu
-      KERNEL_TREE_BRANCH_4:
-        description: 'Kernel Tree Branch (SUSFS)'
-        default: 'wip-noksu'
-        required: false
-        type: choice
-        options:
-          - stable-susfs
       VERSION:
         description: 'Zip Version'
         default: '1.0.0'
@@ -127,25 +121,6 @@ jobs:
           - branch: OCUV
             kernel: 5
             variant: original
-
-          - branch: SUSFS
-            kernel: 3
-            variant: uv
-          - branch: SUSFS
-            kernel: 4
-            variant: uv
-          - branch: SUFS
-            kernel: 6
-            variant: uv
-          - branch: SUSFS
-            kernel: 3
-            variant: gpustk
-          - branch: SUSFS
-            kernel: 4
-            variant: gpustk
-          - branch: SUSFS
-            kernel: 6
-            variant: gpustk
 
     runs-on: ubuntu-latest
     env:
