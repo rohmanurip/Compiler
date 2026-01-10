@@ -99,7 +99,7 @@ jobs:
         run: |
           git clone --depth=1 --branch "${{ env.KERNEL_BRANCH }}" "${{ env.KERNEL_TREE }}" kernel_tree
 
-      - name: Apply Patches (SuSFS/Next)
+      - name: Apply Patches (SuSFS/Next/RKSU)
         if: ${{ github.event.inputs.KERNEL_PATCH == 'true' }}
         run: |
           cd kernel_tree
@@ -170,9 +170,10 @@ jobs:
       - name: Define ZIP Name
         run: |
           export TZ='Asia/Jakarta'
+          COMPILED_DATE=$(date +%Y%m%d)
+          BRANCH_NAME="${{ env.KERNEL_BRANCH }}"
           VERSION="${{ github.event.inputs.VERSION }}"
-          echo "ZIP_NAME=[Perf]-${VERSION}" >> $GITHUB_ENV
-          echo "ZIP_NAME=[Perf]-${VERSION}"
+          echo "ZIP_NAME=[Perf+-${BRANCH_NAME}]-${VERSION}-${COMPILED_DATE}" >> $GITHUB_ENV
 
       - name: Zip AnyKernel3
         run: |
@@ -192,8 +193,13 @@ jobs:
           fi
 
       - name: Upload Zip
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ZIP_NAME }}
           path: ${{ env.ZIP_NAME }}.zip # ✅ Path relatif dari workspace root
           if-no-files-found: ignore
+
+      - name: Download all ZIP artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
