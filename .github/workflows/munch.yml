@@ -171,8 +171,8 @@ jobs:
         run: |
           export TZ='Asia/Jakarta'
           VERSION="${{ github.event.inputs.VERSION }}"
-          echo "ZIP_NAME=[Perf+]-${VERSION}" >> $GITHUB_ENV
-          echo "ZIP_NAME=[Perf+]-${VERSION}"
+          echo "ZIP_NAME=[Perf]-${VERSION}" >> $GITHUB_ENV
+          echo "ZIP_NAME=[Perf]-${VERSION}"
 
       - name: Zip AnyKernel3
         run: |
@@ -197,8 +197,3 @@ jobs:
           name: ${{ env.ZIP_NAME }}
           path: ${{ env.ZIP_NAME }}.zip # ✅ Path relatif dari workspace root
           if-no-files-found: ignore
-
-      - name: Download ZIP artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
