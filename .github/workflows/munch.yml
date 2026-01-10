@@ -191,6 +191,11 @@ jobs:
             ls -lah
             exit 1
           fi
+      
+      - name: Permissions Checks
+       # Run this command to ensure correct permissions
+        run: | 
+          chmod +x ${{ env.ZIP_NAME }}
 
       - name: Upload Zip
         uses: actions/upload-artifact@v4
